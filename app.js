@@ -30,15 +30,19 @@ app.get('/', async(req, res) => {
 app.post('/add-home', async(req, res) => {
 
     await Home.create(req.body)
-    .then(() => {
+    .then( () => {
         return res.json({
             erro: false,
             mensagem: "Dados da página home cadastrados com sucesso"
-    }).catch(() => {
-        return res.json({
-            erro: true,
-            mensagem: "Erro: Dados da página home não cadastrados com sucesso"
-    });
+        }).catch( () => {
+            return res.json({
+                erro: true,
+                mensagem: "ERRO: Dados da página home não cadastrados com sucesso!"
+            })
+        })
+    })
+
+   
 });
 
 app.listen(8080, () => {

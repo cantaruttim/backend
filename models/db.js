@@ -1,15 +1,15 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('contato', 'root', '123456'{
+const sequelize = new Sequelize('contato', 'root', '123456', {
     host: 'localhost',
     dialect: 'mysql'
 });
 
 sequelize.authenticate()
-.then(() => {
-    console.log("Conexão realizada com sucesso");
-}).catch(() => {
-    console.log("Erro: conexão com o banco de dados não realizada corretamente");
+.then( () => {
+    console.log("Conexão realizada com sucesso!")
+}).catch( () => {
+    console.log("ERRO: conexão não realizada com sucesso!")
 });
 
 module.exports = sequelize;

@@ -2,7 +2,7 @@ const { Sequelize } = require('sequelize');
 const sequelize = require('sequelize');
 const db = require('./db');
 
-const Home = db.define('homes', {
+const Home = db.define('contato', {
     id: {
     type: sequelize.INTEGER,
     autoIncrement: true,
@@ -31,6 +31,6 @@ const Home = db.define('homes', {
     },
 });
 
-homes.sync();
+Home.sync();
 // home.synce( {alter: true } );
 module.exports = Home;
