@@ -31,6 +31,6 @@ const Home = db.define('contato', {
     },
 });
 
-Home.sync();
+// Home.sync();
 // home.synce( {alter: true } );
 module.exports = Home;
