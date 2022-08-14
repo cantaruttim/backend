@@ -31,16 +31,6 @@ app.get('/', async(req, res) => {
         });
     });
 
-   /* return res.json({
-        erro: false,
-        datahome: {
-            text_1: "Temos a solução",
-            text_2: "que a sua empresa Precisa",
-            text_3: "Podemos ajudar a sua empresa!",
-            btn_title: "Entrar em Contato",
-            btn_link: "http://localhost:3000/contato"
-        }
-    }) */
 });
 
 app.post('/add-home', async(req, res) => {
