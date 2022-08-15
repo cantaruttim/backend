@@ -3,6 +3,8 @@ const cors = require('cors');
 const app = express();
 
 const Home = require('./models/Home');
+const MsgContato = require('./models/MsgContato');
+
 
 app.use(express.json());
 
@@ -59,6 +61,27 @@ app.post('/add-home', async (req, res) => {
         });
     });
    
+});
+
+app.post("/add-msg-contact", async(req, res) => {
+    // console.log(req.body)
+
+    await MsgContato.create(req.body)
+    .then((msgcontato) => {
+
+        return res.json({
+            erro: false,
+            id: msgcontato.id,
+            mensagem: "Mensagem de contato enviado com sucesso!"
+        });
+
+    }).catch(() => {
+        return res.status(400).json({
+            erro: true,
+            mensagem: "Mensagem de contato não enviado com sucesso!"
+        });
+    })
+
 });
 
 app.listen(8080, () => {
