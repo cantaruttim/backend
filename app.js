@@ -18,11 +18,11 @@ app.get('/', async(req, res) => {
 
     await Home.findOne({
         attributes: ['text_one', 'text_two', 'text_three', 'btn_title', 'btn_link']
-    });
-        then( (datahome) => {
+    })
+        .then((datahome) => {
             return res.json({
                 erro: false,
-                datahome
+                datahome: datahome
             });
         }).catch( () => {
             return res.status(400).json({
@@ -33,12 +33,11 @@ app.get('/', async(req, res) => {
 
 });
 
-app.post('/add-home', async(req, res) => {
+app.post('/add-home', async (req, res) => {
 
+    const datahome = await Home.findOne();
 
-    const dataHome = await Home.findOne();
-
-    if(dataHome) {
+    if(datahome) {
 
         return res.status(400).json({
             erro: true,
@@ -48,18 +47,17 @@ app.post('/add-home', async(req, res) => {
     }
 
     await Home.create(req.body)
-    .then( () => {
+    .then(() => {
         return res.json({
             erro: false,
             mensagem: "Dados da página home cadastrados com sucesso"
-        }).catch( () => {
+        }).catch(() => {
             return res.status(400).json({
                 erro: true,
                 mensagem: "ERRO: Dados da página home não cadastrados com sucesso!"
             })
         })
     })
-
    
 });
 
